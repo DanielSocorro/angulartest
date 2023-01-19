@@ -9,6 +9,7 @@ import { PokemonService } from '../services/pokemon.service';
 export class PokemonsComponent implements OnInit{
 
   name!: string;
+  urlImage!: string
 
 
   constructor(private pokemonService : PokemonService) {}
@@ -17,8 +18,8 @@ export class PokemonsComponent implements OnInit{
   }
 
   search() {
-    this.pokemonService.getPokemon(this.name).subscribe(data => {
-      console.log(data)
+    this.pokemonService.getPokemon(this.name).subscribe((data:any) => {
+     this.urlImage = data.sprites.front_default
     })
   }
 }
